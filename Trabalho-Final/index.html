@@ -1,99 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trabalho Redes-I 2023.1 MQTT</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalho Redes-I 2023.1 MQTT</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
   <body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
+      <a class="navbar-brand" href="#">MQTT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="#intro">Introdução</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#história">Contexto Histórico</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#definição">Definição</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#exemplos">Exemplos Praticos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#implementações">Implementações</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#conclusão">Conclusão</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#referências">Referências</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--  Carousel 
     <div
       id="carouselExampleIndicators"
       class="carousel slide"
       data-ride="carousel"
     >
       <ol class="container carousel-indicators">
-        <li
-          data-target="#carouselExampleIndicators"
-          data-slide-to="0"
-          class="active"
-        >
-          Introdução
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1">
-          História
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2">
-          Definição
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3">
-          Exemplos
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4">
-          Implementações
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="5">
-          Conclusão
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="6">
-          Referências
-        </li>
+
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">Introdução</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1">História</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2">Definição</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3">Exemplos</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4">Implementações</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5">Conclusão</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="6">Referências</li>
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <a href="#intro"
-            ><img
-              class="d-block w-100"
-              src="./images/mqtt-logo.png"
-              alt="First slide"
-          /></a>
+          <a href="#intro"><img class="d-block w-100" src="image1.jpg" alt="First slide" /></a>
         </div>
         <div class="carousel-item">
-          <a href="#história"
-            ><img
-              class="d-block w-100"
-              src="./images/mqtt5-timeline.jpg"
-              alt="Second slide"
-          /></a>
+          <a href="#história"><img class="d-block w-100" src="image2.jpg" alt="Second slide" /></a>
         </div>
         <div class="carousel-item">
-          <a href="#definição"
-            ><img class="d-block w-100" src="image3.jpg" alt="Third slide"
-          /></a>
+          <a href="#definição"><img class="d-block w-100" src="image3.jpg" alt="Third slide" /></a>
         </div>
         <div class="carousel-item">
-          <a href="#exemplos"
-            ><img
-              class="d-block w-100"
-              src="./images/MQTT.png"
-              alt="Fouth slide"
-          /></a>
+          <a href="#exemplos"><img class="d-block w-100" src="image4.jpg" alt="Fouth slide" /></a>
         </div>
         <div class="carousel-item">
-          <a href="#implementações"
-            ><img
-              class="d-block w-100"
-              src="./images/esp32-mqtt-publish-subscribe.jpg"
-              alt="Fifth slide"
-          /></a>
+          <a href="#implementações"><img class="d-block w-100" src="image5.jpg" alt="Fifth slide" /></a>
         </div>
         <div class="carousel-item">
-          <a href="#conclusão"
-            ><img class="d-block w-100" src="image6.jpg" alt="Sixth slide"
-          /></a>
+          <a href="#conclusão"><img class="d-block w-100" src="image6.jpg" alt="Sixth slide" /></a>
         </div>
         <div class="carousel-item">
-          <a href="#referências"
-            ><img
-              class="d-block w-100"
-              src="./images/mqtt-book.jpg"
-              alt="Seventh slide"
-          /></a>
+          <a href="#referências"><img class="d-block w-100" src="image7.jpg" alt="Seventh slide" /></a>
         </div>
       </div>
       <a
@@ -114,60 +98,119 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div>
-    <div class="container orange md-3 justify-content-center">
-      <h1 class="jumbotron d-flex page-header">MQTT</h1>
+    </div>-->
+    <!-- Content -->
+    <div class="container jumbotrom jumbotron-fluid content md-3 justify-content-center">
+      <h1 class="jumbotron d-flex page-header justify-content-center">MQTT</h1>
       <div id="intro">
-        <p class="lead blue md-5">Introdução</p>
+        <h2 class="blue md-5">
+          Introdução
+        </h2>
         <div class="panel">
           <p>
-            Este artigo tem como objetivo apresentar um resumo bibliográfico, em
-            formato de website, sobre o protocolo MQTT para a disciplina de
-            Redes de Computadores I, ministrada pelo professor Luís Kowalski, na
-            Universidade Federal do Rio de Janeiro. Ao longo das seções, serão
-            abordados temas pertinentes à tecnologia em questão, tais como
-            história, objetivos, propósitos, desenvolvimentos e projeções
-            futuras. Além disso, serão apresentadas aplicações do MQTT com a
-            exibição prática de um dispositivo que utiliza esse protocolo. Por
-            fim, é importante mencionar que as referências bibliográficas deste
-            artigo estarão disponíveis na aba "fontes" do website.
-          </p>
-          <p>
-            O protocolo MQTT é um protocolo de rede voltado para o uso de
-            equipamentos IoT (Internet of Things - Internet das Coisas em
-            tradução literal) [1]. Ele possui aplicações que vão desde o ramo
-            petrolífero, com sensores de temperatura e medição de tanques, até a
-            vida cotidiana, como em casas inteligentes [2]. Por esses motivos,
-            ele é considerado uma tecnologia eficiente e de fácil implementação,
-            valorizando as características intrínsecas ao desenvolvimento dos
-            dispositivos IoT [3], dispensando termos técnicos e priorizando a
-            flexibilidade.
-          </p>
-          <p>
-            Apesar de ser considerado uma tecnologia antiga, não em termos de
-            tempo, mas devido às constantes mudanças nas eras tecnológicas, o
-            cerne do protocolo de comunicação permanece o mesmo. No entanto,
-            diversas inovações surgiram, sendo a mais significativa a transição
-            de software proprietário para uma abordagem open-source, reafirmando
-            e propagando seu status como um dos padrões na transmissão de dados
-            na Internet das Coisas.
-          </p>
+            Este artigo tem como objetivo um resumo bibliográfico, em forma de
+            website, do protocolo MQTT para a disciplina de Redes de Computadores
+            I ministrada pelo professor Luís Kowalski na Universidade Federal do
+            Rio de Janeiro. Ao longo das seções serão abordados assuntos inerentes
+            à tecnologia em questão, tal como: História, Objetivo, Propósitos,
+            desenvolvimentos e o projeções futuras. Além disso, será também
+            apresentado aplicações MQTT com a exibição prática de um dispositivo
+            que faz uso do protocolo. Por fim, cabe mencionar que as referências
+            bibliográficas neste artigo estarão dispostas na aba “fontes” do
+            website. O protocolo MQTT configura-se, de forma resumida, em um
+            protocolo de rede voltado para o uso de equipamentos IoT(Internet of
+            things - Internet das Coisas em tradução literal)[1], tendo aplicações
+            desde de o ramo petrolífero - em sensores de temperatura e medição de
+            tanques - até à vida rotineira como em casas inteligentes[2]. Por
+            esses fatores, define-se também como uma tecnologia eficiente e de
+            fácil implementação, visto as características intrínsecas ao
+            desenvolvimento dos Inventos IoT[3] - dispensar os “tecnicismos” e
+            prezar pela flexibilidade. Apesar de ser uma tecnologia considerada
+            antiga - não em termos de tempo em si, mas em razão da constante
+            mudança de eras tecnológicas -, o cerne do protocolo de comunicação
+            continua o mesmo. Contudo, diversas inovações surgiram, sendo a mais
+            significante residindo no fato de sua passagem de software privado
+            para uma técnica open-source, reafirmando e propagando, assim, seu
+            status como um dos padrões na transmissão de dados na Internet das
+            Coisas[3].</p>
         </div>
       </div>
+      <hr class="my-4">
       <div id="história">
-        <p class="lead">Contexto Histórico</p>
+        <h2 class="blue md-5">Contexto Histórico</h2>
         <div class="panel">
-          <p>MQQT foi pensado para monitorar oleodutos.</p>
+          <p>O protocolo MQTT(Transporte de Telemetria MQ em tradução livre) foi originalmente projetado para a “IoTzação”
+            – no tangível ao uso de sensores – de equipamentos na indústria de petróleo e gás, mais especificamente no
+            âmbito de monitoramento dos dutos de óleo. Desenvolvido por uma junção de funcionários da IBM(inclusive MQ
+            advém da linha de equipamentos IBM Message Queue Series) e EuroTech, o protocolo em questão foi proposto em
+            1999 utilizando redes TCP/IP, sendo, mais tarde, aprimorado para utilização de outros como MQTT sobre SSL/TSL
+            e MQTT sobre WebSockets[4].
+            Posteriormente a sua criação, o sistema passou por significativas mudanças seja pela padronização em
+            dispositivos IoT, seja pelo incremento de novas tecnologias. Quanto esta última, convém pontuar algumas como:
+            Em 2013, a versão 3.1 adicionou diversas especificações no uso de dispositivos sensores;
+            Entre 2014 e 2019, com o aumento da IoTização de equipamentos, diversos softwares e bibliotecas foram
+            desenvolvidos para dar suporte à tecnologia em questão, tendo suporte de várias plataformas e linguagens de
+            programação.</p>
         </div>
       </div>
+      <hr class="my-4">
       <div id="definição">
-        <p class="lead">Definição</p>
+        <h2 class="blue md-5">Definição</h2>
         <div class="panel">
-          <p>É um protocolo Brooker-Subscriber.</p>
+          <p>A arquitetura MQTT funciona através do padrão “publisher-subscriber”(publicadores-subscritores) no qual, em
+            linhas gerais, o primeiro é responsável pelo envio da mensagem, ao passo que o segundo recebe. Além disso,
+            esses podem ser quaisquer dispositivos IoT, sensores ou, até mesmo, aplicações – são geralmente conhecidos
+            como clientes. Contudo, antes de adentrar nesses conceitos, convém definir alguns parâmetros de suma
+            importância para o entendimento do protocolo:
+            Broker: configura-se como o ator intermediário entre a comunicação dos publicadores e subscritores, isto é,
+            recebendo o conteúdo e entregando-o.
+            Tópicos: utilizado para categorizar a mensagem – muitas entendido de forma hierárquica –, ou seja, servindo
+            para organizar assuntos do MQTT.</p>
+  
+          <img src=".\image8.png" alt="Descrição da imagem">
+  
+          <p>
+          Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
+          final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
+          mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
+          </p>
+  
+          <p class="lead">Quality of Service</p>
+          <p>
+            Outro conceito importante para o entendimento do protocolo MQTT seria os diferentes níveis de Qualidade de
+            Serviços(QoS), que são utilizados para a confiabilidade da entrega. Existem três níveis QoS:
+  
+            <h1>Listar</h1>
+            QoS 0: Sendo o mais básico de todos, utiliza a técnica “Fire and forget”, isto é, a transmissão não possui
+            nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
+            pacote será totalmente perdido.
+            QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi realmente
+            entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
+            essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.
+            QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
+            garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
+            através do chamado “four-step handshake” que nada mais é do que um par de request-response.
+          </p>
+          </p>
+          <p class="lead">Persistence in MQTT</p>
+          <p>Como já visto, o protocolo MQTT se fundamenta nos princípios da arquitetura TCP do qual possui, como
+            principal serviço, a confiabilidade de transmissão. Tendo esse paradigma em questão, o MQTT possui suporte em
+            persistência, garantindo que a mensagem não será perdida em casos de problemas na rede. Tal feito é possível
+            pelo fato do protocolo em tela armazenar as mensagens no servidor até chegarem ao subscriber.
+            Para essa configuração o MQTT possui três tipos de mensagem: Non-Persistent, Queued Persistent e Persistent
+            with acknowledgment. A primeira, estabelece-se como o padrão do protocolo onde todas as mensagens são perdidas
+            em caso de problemas na rede. Já a segunda, a mensagem ficará armazenada no servidor até sua entrega, ou seja,
+            fica contida numa fila até seu “chamamento”. Por fim, a Persistent with acknowledgment possui as mesmas
+            características da segunda, com exceção do fato que aguarda uma confirmação de entrega por parte do subscriber
+            – lembrando bastante a questão do Quality of Service(QoS).
+            Contudo, é justo enfatizar que tal tecnologia deve ser usada conforme a exigência do caso, haja visto que a
+            demanda por processamento e armazenamento crescerão a medida que houverem mais mensagens em persistência.
+          </p>
         </div>
       </div>
-      <div id="casosdeuso">
-        <p class="lead">Casos de Uso</p>
+      <hr class="my-4">
+      <div id="exemplos">
+        <h2 class="blue md-5">Casos de Uso</h2>
         <div class="panel">
           <p>
             Internet da Coisas: O protocolo MQTT eh usado em aplicacoes IoT para
@@ -200,20 +243,26 @@
           </p>
         </div>
       </div>
+      <hr class="my-4">
       <div id="implementações">
-        <p class="lead">Implementações</p>
+        <h2 class="blue md-5">Implementações</h2>
         <div class="panel">
           <p>Implementação dos colegas de ECA.</p>
         </div>
       </div>
+      <hr class="my-4">
       <div id="conclusão">
-        <p class="lead">Conclusão</p>
+        <h2 class="blue md-5">Conclusão</h2>
         <div class="panel">
           <p>MQQT é muitom bom nessas condições.</p>
+          <ul>
+            <li>exemplo de subtopico</li>
+          </ul>
         </div>
       </div>
+      <hr class="my-4">
       <div id="referências">
-        <p class="lead">Referências</p>
+        <h2 class="blue md-5">Referências</h2>
         <div class="panel">
           <p>
             1. Página inicial do MQTT. Disponível em:
@@ -253,10 +302,29 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Footer -->
+    <div class="jumbotron jumbotron-fluid bg-dark text-light">
+      <div class="container content">
+      <p>Redes de Computadores I - EEL878 - 2023.1</p>
+      <p>Escola Politecnica da Universidade Federal do Rio de Janeiro</p>
+      <p>
+        Alunos: Gabriel, Leonardo e Lucas
+      </p>
+      <p>"Este trabalho foi totalmente produzido pelos autores que declaram não terem violado os direitos autorais de terceiros, sejam eles pessoas físicas ou jurídicas. Havendo textos, tabelas e figuras transcritos de obras de terceiros com direitos autorais protegidos ou de domínio público tal como idéias e conceitos de terceiros, mesmo que sejam encontrados na Internet, os mesmos estão com os devidos créditos aos autores originais e estão incluídas apenas com o intuito de deixar o trabalho autocontido. O(s) autor(es) tem(êm) ciência dos Artigos 297 a 299 do Código Penal Brasileiro e também que o uso do artifício de copiar/colar texto de outras fontes e outras formas de plágio é um ato ilícito, condenável e passível de punição severa. No contexto da Universidade a punição não precisa se restringir à reprovação na disciplina e pode gerar um processo disciplinar que pode levar o(s) aluno(s) à suspensão."</p>
+  </div>
+  </div>
   </body>
 </html>
