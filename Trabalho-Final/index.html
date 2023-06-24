@@ -122,19 +122,22 @@
           Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
           final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
           mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
+          </p>
 
-          Outro conceito importante para o entendimento do protocolo MQTT seria os diferentes níveis de Qualidade de
-          Serviços(QoS), que são utilizados para a confiabilidade da entrega. Existem três níveis QoS:
-          QoS 0: Sendo o mais básico de todos, utiliza a técnica “Fire and forget”, isto é, a transmissão não possui
-          nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
-          pacote será totalmente perdido.
-          QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi realmente
-          entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
-          essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.
-          QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
-          garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
-          através do chamado “four-step handshake” que nada mais é do que um par de request-response.
-
+          <p class="lead">Quality of Service</p>
+          <p>
+            Outro conceito importante para o entendimento do protocolo MQTT seria os diferentes níveis de Qualidade de
+            Serviços(QoS), que são utilizados para a confiabilidade da entrega. Existem três níveis QoS:
+            QoS 0: Sendo o mais básico de todos, utiliza a técnica “Fire and forget”, isto é, a transmissão não possui
+            nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
+            pacote será totalmente perdido.
+            QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi realmente
+            entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
+            essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.
+            QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
+            garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
+            através do chamado “four-step handshake” que nada mais é do que um par de request-response.
+          </p>
         </p>
       </div>
     </div>
