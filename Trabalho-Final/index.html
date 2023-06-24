@@ -119,28 +119,44 @@
           Tópicos: utilizado para categorizar a mensagem – muitas entendido de forma hierárquica –, ou seja, servindo
           para organizar assuntos do MQTT.</p>
 
-          <img src="C:\Users\gabri\Pratica-Redes-1\Trabalho-Final\image8.png" alt="Descrição da imagem">
+        <img src="C:\Users\gabri\Pratica-Redes-1\Trabalho-Final\image8.png" alt="Descrição da imagem">
 
-          <p></p>
-          Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
-          final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
-          mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
-          </p>
+        <p></p>
+        Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
+        final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
+        mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
+        </p>
 
-          <p class="lead">Quality of Service</p>
-          <p>
-            Outro conceito importante para o entendimento do protocolo MQTT seria os diferentes níveis de Qualidade de
-            Serviços(QoS), que são utilizados para a confiabilidade da entrega. Existem três níveis QoS:
-            QoS 0: Sendo o mais básico de todos, utiliza a técnica “Fire and forget”, isto é, a transmissão não possui
-            nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
-            pacote será totalmente perdido.
-            QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi realmente
-            entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
-            essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.
-            QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
-            garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
-            através do chamado “four-step handshake” que nada mais é do que um par de request-response.
-          </p>
+        <p class="lead">Quality of Service</p>
+        <p>
+          Outro conceito importante para o entendimento do protocolo MQTT seria os diferentes níveis de Qualidade de
+          Serviços(QoS), que são utilizados para a confiabilidade da entrega. Existem três níveis QoS:
+
+          <h1>Listar</h1>
+          QoS 0: Sendo o mais básico de todos, utiliza a técnica “Fire and forget”, isto é, a transmissão não possui
+          nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
+          pacote será totalmente perdido.
+          QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi realmente
+          entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
+          essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.
+          QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
+          garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
+          através do chamado “four-step handshake” que nada mais é do que um par de request-response.
+        </p>
+        </p>
+        <p class="lead">Persistence in MQTT</p>
+        <p>Como já visto, o protocolo MQTT se fundamenta nos princípios da arquitetura TCP do qual possui, como
+          principal serviço, a confiabilidade de transmissão. Tendo esse paradigma em questão, o MQTT possui suporte em
+          persistência, garantindo que a mensagem não será perdida em casos de problemas na rede. Tal feito é possível
+          pelo fato do protocolo em tela armazenar as mensagens no servidor até chegarem ao subscriber.
+          Para essa configuração o MQTT possui três tipos de mensagem: Non-Persistent, Queued Persistent e Persistent
+          with acknowledgment. A primeira, estabelece-se como o padrão do protocolo onde todas as mensagens são perdidas
+          em caso de problemas na rede. Já a segunda, a mensagem ficará armazenada no servidor até sua entrega, ou seja,
+          fica contida numa fila até seu “chamamento”. Por fim, a Persistent with acknowledgment possui as mesmas
+          características da segunda, com exceção do fato que aguarda uma confirmação de entrega por parte do subscriber
+          – lembrando bastante a questão do Quality of Service(QoS).
+          Contudo, é justo enfatizar que tal tecnologia deve ser usada conforme a exigência do caso, haja visto que a
+          demanda por processamento e armazenamento crescerão a medida que houverem mais mensagens em persistência.
         </p>
       </div>
     </div>
