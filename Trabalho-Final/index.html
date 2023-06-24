@@ -138,14 +138,73 @@
       <div id="história">
         <h2 class="blue md-5">Contexto Histórico</h2>
         <div class="panel">
-          <p>MQQT foi pensado para monitorar oleodutos.</p>
+          <p>O protocolo MQTT(Transporte de Telemetria MQ em tradução livre) foi originalmente projetado para a “IoTzação”
+            – no tangível ao uso de sensores – de equipamentos na indústria de petróleo e gás, mais especificamente no
+            âmbito de monitoramento dos dutos de óleo. Desenvolvido por uma junção de funcionários da IBM(inclusive MQ
+            advém da linha de equipamentos IBM Message Queue Series) e EuroTech, o protocolo em questão foi proposto em
+            1999 utilizando redes TCP/IP, sendo, mais tarde, aprimorado para utilização de outros como MQTT sobre SSL/TSL
+            e MQTT sobre WebSockets[4].
+            Posteriormente a sua criação, o sistema passou por significativas mudanças seja pela padronização em
+            dispositivos IoT, seja pelo incremento de novas tecnologias. Quanto esta última, convém pontuar algumas como:
+            Em 2013, a versão 3.1 adicionou diversas especificações no uso de dispositivos sensores;
+            Entre 2014 e 2019, com o aumento da IoTização de equipamentos, diversos softwares e bibliotecas foram
+            desenvolvidos para dar suporte à tecnologia em questão, tendo suporte de várias plataformas e linguagens de
+            programação.</p>
         </div>
       </div>
       <hr class="my-4">
       <div id="definição">
         <h2 class="blue md-5">Definição</h2>
         <div class="panel">
-          <p>É um protocolo Brooker-Subscriber.</p>
+          <p>A arquitetura MQTT funciona através do padrão “publisher-subscriber”(publicadores-subscritores) no qual, em
+            linhas gerais, o primeiro é responsável pelo envio da mensagem, ao passo que o segundo recebe. Além disso,
+            esses podem ser quaisquer dispositivos IoT, sensores ou, até mesmo, aplicações – são geralmente conhecidos
+            como clientes. Contudo, antes de adentrar nesses conceitos, convém definir alguns parâmetros de suma
+            importância para o entendimento do protocolo:
+            Broker: configura-se como o ator intermediário entre a comunicação dos publicadores e subscritores, isto é,
+            recebendo o conteúdo e entregando-o.
+            Tópicos: utilizado para categorizar a mensagem – muitas entendido de forma hierárquica –, ou seja, servindo
+            para organizar assuntos do MQTT.</p>
+  
+          <img src="C:\Users\gabri\Pratica-Redes-1\Trabalho-Final\image8.png" alt="Descrição da imagem">
+  
+          <p>
+          Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
+          final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
+          mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
+          </p>
+  
+          <p class="lead">Quality of Service</p>
+          <p>
+            Outro conceito importante para o entendimento do protocolo MQTT seria os diferentes níveis de Qualidade de
+            Serviços(QoS), que são utilizados para a confiabilidade da entrega. Existem três níveis QoS:
+  
+            <h1>Listar</h1>
+            QoS 0: Sendo o mais básico de todos, utiliza a técnica “Fire and forget”, isto é, a transmissão não possui
+            nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
+            pacote será totalmente perdido.
+            QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi realmente
+            entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
+            essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.
+            QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
+            garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
+            através do chamado “four-step handshake” que nada mais é do que um par de request-response.
+          </p>
+          </p>
+          <p class="lead">Persistence in MQTT</p>
+          <p>Como já visto, o protocolo MQTT se fundamenta nos princípios da arquitetura TCP do qual possui, como
+            principal serviço, a confiabilidade de transmissão. Tendo esse paradigma em questão, o MQTT possui suporte em
+            persistência, garantindo que a mensagem não será perdida em casos de problemas na rede. Tal feito é possível
+            pelo fato do protocolo em tela armazenar as mensagens no servidor até chegarem ao subscriber.
+            Para essa configuração o MQTT possui três tipos de mensagem: Non-Persistent, Queued Persistent e Persistent
+            with acknowledgment. A primeira, estabelece-se como o padrão do protocolo onde todas as mensagens são perdidas
+            em caso de problemas na rede. Já a segunda, a mensagem ficará armazenada no servidor até sua entrega, ou seja,
+            fica contida numa fila até seu “chamamento”. Por fim, a Persistent with acknowledgment possui as mesmas
+            características da segunda, com exceção do fato que aguarda uma confirmação de entrega por parte do subscriber
+            – lembrando bastante a questão do Quality of Service(QoS).
+            Contudo, é justo enfatizar que tal tecnologia deve ser usada conforme a exigência do caso, haja visto que a
+            demanda por processamento e armazenamento crescerão a medida que houverem mais mensagens em persistência.
+          </p>
         </div>
       </div>
       <hr class="my-4">
