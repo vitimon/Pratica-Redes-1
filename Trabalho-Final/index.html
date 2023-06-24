@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +48,7 @@
       data-ride="carousel"
     >
       <ol class="container carousel-indicators">
+
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">Introdução</li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1">História</li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2">Definição</li>
@@ -210,9 +210,37 @@
       </div>
       <hr class="my-4">
       <div id="exemplos">
-        <h2 class="blue md-5">Exemplos Praticos</h2>
+        <h2 class="blue md-5">Casos de Uso</h2>
         <div class="panel">
-          <p>Exemplos de USO</p>
+          <p>
+            Internet da Coisas: O protocolo MQTT eh usado em aplicacoes IoT para
+            conectar dispositivos tais como sensores, broker e servidores. Por
+            exemplo, um sistema de monitoramento hospitalar que coleta dados de
+            temperatura, umidade, concentracao de gases, dados RFID, etc. MQTT
+            eh usado para enviar os dados para o broker e o broker envia para o
+            servidor. O servidor pode ser usado para analisar os dados e tomar
+            decisoes. MQTT eh usado em aplicacoes IoT para conectar dispositivos
+            tais como sensores, broker e servidores. Por exemplo, um sistema de
+            monitoramento hospitalar que coleta dados de temperatura, umidade,
+            concentracao de gases, etc. MQTT eh usado para enviar os dados para
+            o broker por meio de um SBC (ESP32, Raspberry Pi, por exemplo) e o
+            servidor requisita os dados ao broker.
+          </p>
+          <p>
+            Industria Automotiva: MQTT esta se tornando o padrao de comunicacao
+            para carros conectados. Servico de compartilhamento da BMW
+            (DriveNow), SiriusXM da Ford usa HiveMQ. Inicialmente HTTP era
+            usado, mas MQTT eh mais adequado para este caso de uso. Por exemplo,
+            quando o carro esta em uma regiao sem sinal, MQTT pode armazenar as
+            mensagens e enviar quando o sinal voltar.
+          </p>
+          <p>
+            Aplicacoes Mobile: Facebook Messenger e Instagram sao exemplos de
+            aplicacoes que usam MQTT para enviar mensagens em chats. Instagram
+            usa MQTT para enviar notifcacoes. No geral, MQTT eh usado em
+            aplicacoes que precisam de uma persistente de mensagens consumindo
+            uma baixa largura de banda.
+          </p>
         </div>
       </div>
       <hr class="my-4">
@@ -236,14 +264,41 @@
       <div id="referências">
         <h2 class="blue md-5">Referências</h2>
         <div class="panel">
-          <p>1. Página inicial do MQTT. Disponível em: <a href="https://mqtt.org/getting-started/">https://mqtt.org/getting-started/</a>.<br>
-            2. Essenciais do MQTT. Disponível em: <a href="https://www.hivemq.com/mqtt-essentials/">https://www.hivemq.com/mqtt-essentials/</a>.<br>
-            3. Mishra, B.; Kertesz, A. "The Use of MQTT in M2M and IoT Systems: A Survey". In: IEEE (Ed.). IEEE Xplore Digital Library, 2020. DOI: <a href="https://doi.org/10.1109/ACCESS.2020.3030625">10.1109/ACCESS.2020.3030625</a>.<br>
-            4. Thangavel, D.; Ma, X.; Valera, A.; Tan, H.-X.; Tan, C. K.-Y. "Performance evaluation of MQTT and CoAP via a common middleware". In: IEEE (Ed.). IEEE Xplore Digital Library, 2014. DOI: <a href="https://doi.org/10.1109/ICII.2014.7036789">10.1109/ICII.2014.7036789</a>.<br>
-            5. Hillar, G. C. <i>MQTT Essentials - A Lightweight IoT Protocol</i>. Editora: Packt Publishing Ltd, 2017. ISBN: 978-1-78712-563-3.<br>
-            6. Aplicação do protocolo MQTT na indústria de petróleo e gás. Disponível em: <a href="https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/">https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/</a>.<br>
-            7. Comunicando-se com MQTT. Disponível em: <a href="https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt">https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt</a>.
-            </p> 
+          <p>
+            1. Página inicial do MQTT. Disponível em:
+            <a href="https://mqtt.org/getting-started/"
+              >https://mqtt.org/getting-started/</a
+            >.<br />
+            2. Essenciais do MQTT. Disponível em:
+            <a href="https://www.hivemq.com/mqtt-essentials/"
+              >https://www.hivemq.com/mqtt-essentials/</a
+            >.<br />
+            3. Mishra, B.; Kertesz, A. "The Use of MQTT in M2M and IoT Systems:
+            A Survey". In: IEEE (Ed.). IEEE Xplore Digital Library, 2020. DOI:
+            <a href="https://doi.org/10.1109/ACCESS.2020.3030625"
+              >10.1109/ACCESS.2020.3030625</a
+            >.<br />
+            4. Thangavel, D.; Ma, X.; Valera, A.; Tan, H.-X.; Tan, C. K.-Y.
+            "Performance evaluation of MQTT and CoAP via a common middleware".
+            In: IEEE (Ed.). IEEE Xplore Digital Library, 2014. DOI:
+            <a href="https://doi.org/10.1109/ICII.2014.7036789"
+              >10.1109/ICII.2014.7036789</a
+            >.<br />
+            5. Hillar, G. C.
+            <i>MQTT Essentials - A Lightweight IoT Protocol</i>. Editora: Packt
+            Publishing Ltd, 2017. ISBN: 978-1-78712-563-3.<br />
+            6. Aplicação do protocolo MQTT na indústria de petróleo e gás.
+            Disponível em:
+            <a
+              href="https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/"
+              >https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/</a
+            >.<br />
+            7. Comunicando-se com MQTT. Disponível em:
+            <a
+              href="https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt"
+              >https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt</a
+            >. 8. https://www.influxdata.com/blog/mqtt-use-cases/
+          </p>
         </div>
       </div>
     </div>
