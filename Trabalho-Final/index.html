@@ -9,39 +9,74 @@
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
-<body>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="container carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">Introdução</li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1">História</li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2">Definição</li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="3">Exemplos</li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="4">Implementações</li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="5">Conclusão</li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="6">Referências</li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="#intro"><img class="d-block w-100" src="image1.jpg" alt="First slide" /></a>
+  <body>
+    <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
+      <a class="navbar-brand" href="#">MQTT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#intro">Introdução<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#história">Contexto Histórico</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#definição">Definição</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#exemplos">Exemplos Praticos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#implementações">Implementações</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#conclusão">Conclusão</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#referências">Referências</a>
+          </li>
+        </ul>
       </div>
-      <div class="carousel-item">
-        <a href="#história"><img class="d-block w-100" src="image2.jpg" alt="Second slide" /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#definição"><img class="d-block w-100" src="image3.jpg" alt="Third slide" /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#exemplos"><img class="d-block w-100" src="image4.jpg" alt="Fouth slide" /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#implementações"><img class="d-block w-100" src="image5.jpg" alt="Fifth slide" /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#conclusão"><img class="d-block w-100" src="image6.jpg" alt="Sixth slide" /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#referências"><img class="d-block w-100" src="image7.jpg" alt="Seventh slide" /></a>
+    </nav>
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="container carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">Introdução</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1">História</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2">Definição</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3">Exemplos</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4">Implementações</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5">Conclusão</li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="6">Referências</li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="#intro"><img class="d-block w-100" src="image1.jpg" alt="First slide" /></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#história"><img class="d-block w-100" src="image2.jpg" alt="Second slide" /></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#definição"><img class="d-block w-100" src="image3.jpg" alt="Third slide" /></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#exemplos"><img class="d-block w-100" src="image4.jpg" alt="Fouth slide" /></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#implementações"><img class="d-block w-100" src="image5.jpg" alt="Fifth slide" /></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#conclusão"><img class="d-block w-100" src="image6.jpg" alt="Sixth slide" /></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#referências"><img class="d-block w-100" src="image7.jpg" alt="Seventh slide" /></a>
+        </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -208,4 +243,21 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Footer -->
+    <div class="jumbotron jumbotron-fluid bg-dark text-light">
+      <div class="container content">
+      <p>Redes de Computadores I - EEL878 - 2023.1</p>
+      <p>Escola Politecnica da Universidade Federal do Rio de Janeiro</p>
+      <p>
+        Alunos: Gabriel, Leonardo e Lucas
+      </p>
+      <p>"Este trabalho foi totalmente produzido pelos autores que declaram não terem violado os direitos autorais de terceiros, sejam eles pessoas físicas ou jurídicas. Havendo textos, tabelas e figuras transcritos de obras de terceiros com direitos autorais protegidos ou de domínio público tal como idéias e conceitos de terceiros, mesmo que sejam encontrados na Internet, os mesmos estão com os devidos créditos aos autores originais e estão incluídas apenas com o intuito de deixar o trabalho autocontido. O(s) autor(es) tem(êm) ciência dos Artigos 297 a 299 do Código Penal Brasileiro e também que o uso do artifício de copiar/colar texto de outras fontes e outras formas de plágio é um ato ilícito, condenável e passível de punição severa. No contexto da Universidade a punição não precisa se restringir à reprovação na disciplina e pode gerar um processo disciplinar que pode levar o(s) aluno(s) à suspensão;"</p>
+  </div>
+  </div>
+  </body>
 </html>
