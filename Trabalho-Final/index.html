@@ -136,11 +136,11 @@
           Entre 2014 e 2019, com o aumento da IoTização de equipamentos, diversos softwares e bibliotecas foram
           desenvolvidos para dar suporte à tecnologia em questão, tendo suporte de várias plataformas e linguagens de
           programação.
-          <div class="container">
-            <div class="text-center">
-              <img src=".\image9.png" style="width: 75%; height: auto;" alt="Descrição da imagem">
-            </div>
+        <div class="container">
+          <div class="text-center">
+            <img src=".\image9.png" style="width: 75%; height: auto;" alt="Descrição da imagem">
           </div>
+        </div>
         </p>
       </div>
     </div>
@@ -152,24 +152,71 @@
           esses podem ser quaisquer dispositivos IoT, sensores ou, até mesmo, aplicações – são geralmente conhecidos
           como clientes. Contudo, antes de adentrar nesses conceitos, convém definir alguns parâmetros de suma
           importância para o entendimento do protocolo:
-          Broker: configura-se como o ator intermediário entre a comunicação dos publicadores e subscritores, isto é,
-          recebendo o conteúdo e entregando-o.
-          Tópicos: utilizado para categorizar a mensagem – muitas entendido de forma hierárquica –, ou seja, servindo
-          para organizar assuntos do MQTT.</p>
+        <ul class="custom-list">
+          <li>MQTT Broker: configura-se como o ator intermediário entre a comunicação dos publicadores e subscritores,
+            isto é,
+            recebendo o conteúdo e entregando-o.</li>
+          <ul class="custom-list">
+            <li>Filtro e roteamento de mensagens;</li>
+            <li>Controle de Sessões;</li>
+            <li>Controle de segurança(Autenticação e Autorização);</li>
+            <li>Responsável pela Escalabilidade, integração e monitoramento;
+            </li>
+          </ul>
+          <li>MQTT CLient: Ao contrário do Broker, o Client atua na ponta das redes como sistemas finais, seja como
+            publishers -- enviando os dados --, seja como subscribers -- recebendo e interpretando as mensagens.</li>
+          <li> Tópicos: utilizado para categorizar a mensagem – muitas entendido de forma hierárquica –, ou seja,
+            servindo
+            para organizar assuntos do MQTT.</li>
+        </ul>
 
-        
-          <div class="container">
-            <div class="text-center">
-              <img src=".\image8.png" alt="Descrição da imagem">
-            </div>
-          </div>
-        
-
-        <p></p>
-        Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
-        final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
-        mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
         </p>
+
+
+
+        <div class="container">
+          <div class="text-center">
+            <img src=".\image8.png" alt="Descrição da imagem">
+          </div>
+        </div>
+
+
+        <p>
+          Na imagem acima, o Broker seria responsável por assegurar a comunicação entre o dispositivo IoT com o sistema
+          final, sempre gerenciando a relação entre publicadores e subscritores. Ele faz isso verificando o tópico da
+          mensagem advinda do publisher e encaminhando para o subscriber do mesmo assunto.
+        </p>
+
+        <p>Continuamente, o MQTT funciona por intermédio de Pacotes de controles(Control Packet), dos quais são
+          essenciais para a comunicação entre os sistemas finais e o MQTT Broker, visto que carregam o formato da
+          mensagem. Existem diversos tipos de pacotes, cada um voltado a um propósito específico, sendo que os
+          principais são:
+        <ul>
+          <li> CONNECT: Utilizado pelo cliente para estabelecer a conexão, possuindo informações como o Identificador do
+            Cliente, Opções de Conexão e autenticação.</li>
+          <li> CONNACK: Define-se como a respostas a um CONNACK advindo de um cliente. Além disso, sempre retorna um
+            indicador de conexão.
+          </li>
+          <li> PUBLISH: Usado para enviar a mensagem de um cliente para o servidor(subscriber), possuindo campos como
+            tópico, nível de QoS.
+          </li>
+          <li> PUBACK: Tal como o CONNACK, é a confirmação do processamento de um PUBLISH com QoS 1.
+          </li>
+          <li> PUBREC: Confirmação do processamento de um PUBLISH com QoS 2.
+          </li>
+          <li> SUBSCRIBE: Utilizado pelo cliente para exigir tópicos, sempre especificando o QoS(default 0).
+          </li>
+          <li> SUBACK: Confirmação do processamento de um SUBSCRIBE.
+          </li>
+        </ul>
+
+        </p>
+        <div class="container">
+          <div class="text-center">
+            <img src=".\image10.gif" style="width: 75%; height: auto;" alt="Descrição da imagem">
+          </div>
+        </div>
+
 
         <p class="lead">Quality of Service</p>
         <p>
@@ -181,10 +228,20 @@
             possui
             nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
             pacote será totalmente perdido.</li>
+            <div class="container">
+              <div class="text-center">
+                <img src=".\image11.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
+              </div>
+            </div>
           <li> QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi
             realmente
-            entregue. Ele faz isso por intermédio da espera de um “ACK” por parte do cliente. Todavia, caso não receba
+            entregue. Ele faz isso por intermédio da espera de um “ACK”(PUBACK) por parte do cliente. Todavia, caso não receba
             essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.</li>
+            <div class="container">
+              <div class="text-center">
+                <img src=".\image12.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
+              </div>
+            </div>
           <li> QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
             garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
             através do chamado “four-step handshake” que nada mais é do que um par de request-response.</li>
