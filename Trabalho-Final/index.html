@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <!-- Navbar-->
   <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
@@ -141,6 +143,7 @@
         <div class="container">
           <div class="text-center">
             <img src=".\image9.png" style="width: 75%; height: auto;" alt="Descrição da imagem">
+            <figcaption class="figure-caption text-center">Figura 0 - Exemplo de Uso. Fonte:www.hivemq.com</figcaption>
           </div>
         </div>
         </p>
@@ -166,7 +169,8 @@
             </li>
           </ul>
           <li>MQTT CLient: Ao contrário do Broker, o Client atua na ponta das redes como sistemas finais, seja como
-            publishers -- enviando os dados --, seja como subscribers -- recebendo e interpretando as mensagens ou ambos.</li>
+            publishers -- enviando os dados --, seja como subscribers -- recebendo e interpretando as mensagens ou
+            ambos.</li>
           <li> Tópicos: utilizado para categorizar a mensagem – muitas entendido de forma hierárquica –, ou seja,
             servindo
             para organizar assuntos do MQTT.</li>
@@ -179,6 +183,7 @@
         <div class="container">
           <div class="text-center">
             <img src=".\image8.png" alt="Descrição da imagem">
+            <figcaption class="figure-caption text-center">Figura 1 - Funcionamento MQTT Broker. Fonte:https://www.bivocom.com/</figcaption>
           </div>
         </div>
 
@@ -230,23 +235,32 @@
             possui
             nenhum tipo de verificação, enviada apenas uma vez. Cabe enfatizar que em caso de desconexão ou falha, o
             pacote será totalmente perdido.</li>
-            <div class="container">
-              <div class="text-center">
-                <img src=".\image11.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
-              </div>
+          <div class="container">
+            <div class="text-center">
+              <img src=".\image11.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
+              <figcaption class="figure-caption text-center">Figura 2 - Funcionamento QoS 0 . Fonte:www.hivemq.com</figcaption>
             </div>
+          </div>
           <li> QoS 1: Possui uma complexidade maior que o anterior, enviando a mensagem e verificando se essa foi
             realmente
-            entregue. Ele faz isso por intermédio da espera de um “ACK”(PUBACK) por parte do cliente. Todavia, caso não receba
+            entregue. Ele faz isso por intermédio da espera de um “ACK”(PUBACK) por parte do cliente. Todavia, caso não
+            receba
             essa confirmação, enviará a mensagem, tendo, dessa forma, duplicado o pacote.</li>
-            <div class="container">
-              <div class="text-center">
-                <img src=".\image12.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
-              </div>
+          <div class="container">
+            <div class="text-center">
+              <img src=".\image12.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
+              <figcaption class="figure-caption text-center">Figura 3 - Funcionamento QoS 1. Fonte:www.hivemq.com</figcaption>
             </div>
+          </div>
           <li> QoS 2: Sendo o maior nível de Qualidade de Serviços no MQTT, este envia a mensagem uma única vez, porém
             garante que a mesma será recebida. Ademais, os publishers e broker asseguram a confiabilidade da entrega
             através do chamado “four-step handshake” que nada mais é do que um par de request-response.</li>
+            <div class="container">
+              <div class="text-center">
+                <img src=".\image30.svg" style="width: 75%; height: auto;" alt="Descrição da imagem">
+                <figcaption class="figure-caption text-center">Figura 4 - Funcionamento QoS 2. Fonte:www.hivemq.com</figcaption>
+              </div>
+            </div>
         </ul>
 
         </p>
@@ -265,6 +279,43 @@
           Contudo, é justo enfatizar que tal tecnologia deve ser usada conforme a exigência do caso, haja visto que a
           demanda por processamento e armazenamento crescerão a medida que houverem mais mensagens em persistência.
         </p>
+        <h2 class="md-5">Estrutura do Pacote</h2>
+        <p>Para o entendimento do protocolo MQTT, é necessário olhar para a estrutura do pacote. Este é composto um
+          cabeçalho fixo(header) de 2 bytes, do qual o primeiro é responsável por caracterizar atributos da mensagem ao
+          lado de flags, ao passo que o segundo carrega a mensagem de fato.</p>
+        <div class="container">
+          <div class="text-center">
+            <img src=".\image20.PNG" style="width: 75%; height: auto;" alt="Descrição da imagem">
+            <figcaption class="figure-caption text-center">Figura 5 - Cabeçalho MQTT. Fonte:public.dhe.ibm.com</figcaption>
+          </div>
+        </div>
+        <p>Como é possível ver acima o byte 1 reserva 2 bits para o nível QoS (visto anteriormente), bem como os bits
+          4-7 para a o tipo da mensagem(descrito na seção Definição).
+          O bit 3 é usado como como uma flag para garantir uma maior confiabilidade de que a mensagem não foi duplicada
+          – daí sua sigla Duplicate Delivery –, caso haja problemas com os ACK(acknowledgment), contudo, só se aplicará
+          à mensagens cujo valor de QoS é diferente de 0 – caso contrário, “fire and forget” desse nível não faria
+          sentido. Desse modo, quando o MQTT Client envia uma mensagem para o MQTT Broker, o DUP será definido para 0,
+          todavia, se o Client não receber o ACK em um dado período de tempo, assumirá que o pacote não foi enviado
+          propriamente para o destinatário final, retransmitindo, assim o mesmo pacote, mas com DUP configurado em 1
+          (indicando que o pacote tinha sido enviado).
+          Já o campo “RETAIN”(bit 0), é utilizado para o controle de retenção no broker e do comportamento dos
+          subscribers quando conectados a um tópico. Além disso, com esse campo, os clientes podem acessar informações
+          mesmo que eles não estejam conectados no instante da publicação(publish) do pacote. Dessa maneira, quando for
+          “1”, o broker armazenará a mensagem e irá descartar a que estava anteriormente guardada.
+          Por fim, o byte 2 é reservado exclusivamente para o “remaining length”, no qual é, em linhas gerais, utilizado
+          para determinar o tamanho do variable header(cabeçalho variável) – representado pelos primeiros 7 bits – e o
+          payload, otimizando, portanto, o tamanho da mensagem. Tanto o variable header quanto o payload possuem
+          informações adicionais que estão em função dos pacotes de controles mencionados anteriormente, por exemplo, se
+          o cliente enviar uma mensagem para um servidor(PUBLISH), o variable header terá atributos como o identificador
+          da mensagem, enquanto o payload conterá os dados do tópico enviado(published).
+        </p>
+        <div class="container">
+          <div class="text-center">
+            <img src=".\image31.jpeg" style="width: 75%; height: auto;" alt="Descrição da imagem">
+            <figcaption class="figure-caption text-center">Figura 6 - Cabeçalho MQTT. Fonte:www.steves-internet-guide.com</figcaption>
+          </div>
+        </div>
+
       </div>
       <hr class="my-4">
       <div id="exemplos">
@@ -305,8 +356,8 @@
       <div id="implementações">
         <h2 class="blue md-5">Exemplo de Implementação</h2>
         <div class="panel">
-          <p>No Laboratório de Engenharia de Software (LENS), sob orientação do prof C. Miceli, alguns alunos 
-            ficaram responsáeis por um projeto de monitoramento e tomada de dados de alguns sensores como de 
+          <p>No Laboratório de Engenharia de Software (LENS), sob orientação do prof C. Miceli, alguns alunos
+            ficaram responsáeis por um projeto de monitoramento e tomada de dados de alguns sensores como de
             temperatura, luminosidade e CO2. A parte aqui citada corresponde à parte do aluno Matheus Gomes Rocha de
             Engenharia de Controle e Automação que ficou responsável pela tomada de dados de CO2 dentro do laboratório.
           </p>
@@ -318,7 +369,7 @@
           <ul>
             <li>
               <h3>Publisher</h3>
-              <p>Um sensor MQ-135 toma dados continuamente que são lidos por um dispositivo ESP8266 
+              <p>Um sensor MQ-135 toma dados continuamente que são lidos por um dispositivo ESP8266
                 que publica periodicamente (a cada 2 segundos) uma mensagem MQQT no contexto "lens/CO2"
                 com o conteúdo de valor de gás medido e timestamp.
               </p>
@@ -326,17 +377,20 @@
             <li>
               <h3>Brooker</h3>
               <p>O brooker escolhido foi o Mosquitto rodando em um RaspberryPi, que também recebe mensagens de outros
-                publishers com outros sensores acoplados, no caso no próprio raspberry os dados são armazenados num banco de dados
+                publishers com outros sensores acoplados, no caso no próprio raspberry os dados são armazenados num
+                banco de dados
                 não relacional, semdo assim outro software no mesmo hardware o subscriber desse fluxo.
               </p>
             </li>
             <li>
               <h3>Subscriber</h3>
-              <p>Os dados são persistidos localmente com uma api em Python num MongoDB, processados e enviados (com uma frequência menor: 1 hora) em "levas" para um servidor que faz a persistência
+              <p>Os dados são persistidos localmente com uma api em Python num MongoDB, processados e enviados (com uma
+                frequência menor: 1 hora) em "levas" para um servidor que faz a persistência
                 de longo prazo em outro banco de dados relacional e então esses dados são descartados no Raspberry.
               </p>
             </li>
-            <p>Nota: Apenas o fluxo do sensor ao brooker está de fato implementado e essa é a parte do aluno referido.[9]</p>
+            <p>Nota: Apenas o fluxo do sensor ao brooker está de fato implementado e essa é a parte do aluno
+              referido.[9]</p>
           </ul>
 
           </p>
@@ -346,25 +400,34 @@
       <div id="conclusão">
         <h2 class="blue md-5">Conclusão</h2>
         <div class="panel">
-          <p>É perceptível após as explicações acima que apesar de seus quase 25 anos de existência(em 2023 25 anos é um tempo
-            considerável para uma tecnologia web) o MQTT tem seu próprio nicho de aplicações seja pelo baixo consumo de energia e memória
-            pelo cabeçalho reduzido em relação ao HTTP, seja pela capacidade de persistir dados em tráfego por existir a figura
+          <p>É perceptível após as explicações acima que apesar de seus quase 25 anos de existência(em 2023 25 anos é um
+            tempo
+            considerável para uma tecnologia web) o MQTT tem seu próprio nicho de aplicações seja pelo baixo consumo de
+            energia e memória
+            pelo cabeçalho reduzido em relação ao HTTP, seja pela capacidade de persistir dados em tráfego por existir a
+            figura
             de um broker no fluxo ou ainda por ser um protocolo simples, mas com grande flexibilidade.
           </p>
           <p>
-            Também é possível perceber através dos exemplos dados que assim como os outros protocolos de comunicação e controle
-            o MQTT é um dos módulos que constroem sistemas mais complexos e esses módulos são facilmente domináveis por 
-            profissionais de início de carreira ou estuantes podendo a quem arquiteta esses sistemas delegar a outros a implementação
-            de partes mais básicas do projeto. 
+            Também é possível perceber através dos exemplos dados que assim como os outros protocolos de comunicação e
+            controle
+            o MQTT é um dos módulos que constroem sistemas mais complexos e esses módulos são facilmente domináveis por
+            profissionais de início de carreira ou estuantes podendo a quem arquiteta esses sistemas delegar a outros a
+            implementação
+            de partes mais básicas do projeto.
           </p>
           <p>
-            Vale ressaltar também que apesar de sua longevidade não existe "bala de prata" na tecnologia e o MQTT não pode ser usado
-            em toda aplicação ou vai ser a melhor opção em todo caso de transmissão de dados, cabendo ao responsável saber quando utilizá-lo 
-            ou não. E também nada garante a eternidade do MQTT, pois múltiplos protocolos e aplicações são desenvolvidos a todo momento e podem porventura 
-            substituir os protocolos mais utilizados na atualidade. 
+            Vale ressaltar também que apesar de sua longevidade não existe "bala de prata" na tecnologia e o MQTT não
+            pode ser usado
+            em toda aplicação ou vai ser a melhor opção em todo caso de transmissão de dados, cabendo ao responsável
+            saber quando utilizá-lo
+            ou não. E também nada garante a eternidade do MQTT, pois múltiplos protocolos e aplicações são desenvolvidos
+            a todo momento e podem porventura
+            substituir os protocolos mais utilizados na atualidade.
           </p>
           <p>
-            Dito isto MQTT ainda permanece como um dos protocolos mais utilizados e constantemente novas aplicações com ele 
+            Dito isto MQTT ainda permanece como um dos protocolos mais utilizados e constantemente novas aplicações com
+            ele
             são desenvolvidas sem algum competidor à altura para toda gama de projetos em que é utilizado.
           </p>
         </div>
@@ -375,38 +438,26 @@
         <div class="panel">
           <p>
             1. Página inicial do MQTT. Disponível em:
-            <a href="https://mqtt.org/getting-started/"
-              >https://mqtt.org/getting-started/</a
-            >.<br />
+            <a href="https://mqtt.org/getting-started/">https://mqtt.org/getting-started/</a>.<br />
             2. Essenciais do MQTT. Disponível em:
-            <a href="https://www.hivemq.com/mqtt-essentials/"
-              >https://www.hivemq.com/mqtt-essentials/</a
-            >.<br />
+            <a href="https://www.hivemq.com/mqtt-essentials/">https://www.hivemq.com/mqtt-essentials/</a>.<br />
             3. Mishra, B.; Kertesz, A. "The Use of MQTT in M2M and IoT Systems:
             A Survey". In: IEEE (Ed.). IEEE Xplore Digital Library, 2020. DOI:
-            <a href="https://doi.org/10.1109/ACCESS.2020.3030625"
-              >10.1109/ACCESS.2020.3030625</a
-            >.<br />
+            <a href="https://doi.org/10.1109/ACCESS.2020.3030625">10.1109/ACCESS.2020.3030625</a>.<br />
             4. Thangavel, D.; Ma, X.; Valera, A.; Tan, H.-X.; Tan, C. K.-Y.
             "Performance evaluation of MQTT and CoAP via a common middleware".
             In: IEEE (Ed.). IEEE Xplore Digital Library, 2014. DOI:
-            <a href="https://doi.org/10.1109/ICII.2014.7036789"
-              >10.1109/ICII.2014.7036789</a
-            >.<br />
+            <a href="https://doi.org/10.1109/ICII.2014.7036789">10.1109/ICII.2014.7036789</a>.<br />
             5. Hillar, G. C.
             <i>MQTT Essentials - A Lightweight IoT Protocol</i>. Editora: Packt
             Publishing Ltd, 2017. ISBN: 978-1-78712-563-3.<br />
             6. Aplicação do protocolo MQTT na indústria de petróleo e gás.
             Disponível em:
             <a
-              href="https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/"
-              >https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/</a
-            >.<br />
+              href="https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/">https://www.emqx.com/en/blog/application-of-mqtt-protocol-in-oil-and-gas-industry/</a>.<br />
             7. Comunicando-se com MQTT. Disponível em:
             <a
-              href="https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt"
-              >https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt</a
-            >.<br>
+              href="https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt">https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt</a>.<br>
             8. EXPLICAR REFERENCIA - <a> https://www.influxdata.com/blog/mqtt-use-cases/ </a>
             <br>
             9. <a href="https://github.com/MattiyyahG/Relatorio_CO2_Sensor">Implementação em um projeto real na UFRJ</a>
