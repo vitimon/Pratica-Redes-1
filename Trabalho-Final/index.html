@@ -325,12 +325,18 @@
             </li>
             <li>
               <h3>Brooker</h3>
-              <p>O brooker escolhido foi o Mosquitto rodando em um RaspberryPi</p>
+              <p>O brooker escolhido foi o Mosquitto rodando em um RaspberryPi, que também recebe mensagens de outros
+                publishers com outros sensores acoplados, no caso no próprio raspberry os dados são armazenados num banco de dados
+                não relacional, semdo assim outro software no mesmo hardware o subscriber desse fluxo.
+              </p>
             </li>
             <li>
               <h3>Subscriber</h3>
-              <p>:</p>
+              <p>Os dados são persistidos localmente com uma api em Python num MongoDB, processados e enviados (com uma frequência menor: 1 hora) em "levas" para um servidor que faz a persistência
+                de longo prazo em outro banco de dados relacional e então esses dados são descartados no Raspberry.
+              </p>
             </li>
+            <p>Nota: Apenas o fluxo do sensor ao brooker está de fato implementado e essa é a parte do aluno referido.[9]</p>
           </ul>
 
           </p>
@@ -386,7 +392,7 @@
             >.<br>
             8. EXPLICAR REFERENCIA - <a> https://www.influxdata.com/blog/mqtt-use-cases/ </a>
             <br>
-            9. Implementação em um projeto real na UFRJ:<a>https://github.com/MattiyyahG/Relatorio_CO2_Sensor</a>
+            9. <a href="https://github.com/MattiyyahG/Relatorio_CO2_Sensor">Implementação em um projeto real na UFRJ</a>
           </p>
         </div>
       </div>
