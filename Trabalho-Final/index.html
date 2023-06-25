@@ -28,10 +28,10 @@
           <a class="nav-link" href="#definição">Definição</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#exemplos">Exemplos Praticos</a>
+          <a class="nav-link" href="#exemplos">Casos de Uso</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#implementações">Implementações</a>
+          <a class="nav-link" href="#implementações">Implementação</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#conclusão">Conclusão</a>
@@ -303,9 +303,37 @@
       </div>
       <hr class="my-4">
       <div id="implementações">
-        <h2 class="blue md-5">Implementações</h2>
+        <h2 class="blue md-5">Exemplo de Implementação</h2>
         <div class="panel">
-          <p>Implementação dos colegas de ECA.</p>
+          <p>No Laboratório de Engenharia de Software (LENS), sob orientação do prof C. Miceli, alguns alunos 
+            ficaram responsáeis por um projeto de monitoramento e tomada de dados de alguns sensores como de 
+            temperatura, luminosidade e CO2. A parte aqui citada corresponde à parte do aluno Matheus Gomes Rocha de
+            Engenharia de Controle e Automação que ficou responsável pela tomada de dados de CO2 dentro do laboratório.
+          </p>
+          <p>
+            Como descrito nos tópicos anteriores os elementos chave publisher-broker-subscriber são implementados
+            com uma série de hardwares e softwares específicos e o fluxo de dados é unidirecional, portanto cada
+            dispositivo atua apenas de uma forma:
+          </p>
+          <ul>
+            <li>
+              <h3>Publisher</h3>
+              <p>Um sensor MQ-135 toma dados continuamente que são lidos por um dispositivo ESP8266 
+                que publica periodicamente (a cada 2 segundos) uma mensagem MQQT no contexto "lens/CO2"
+                com o conteúdo de valor de gás medido e timestamp.
+              </p>
+            </li>
+            <li>
+              <h3>Brooker</h3>
+              <p>O brooker escolhido foi o Mosquitto rodando em um RaspberryPi</p>
+            </li>
+            <li>
+              <h3>Subscriber</h3>
+              <p>:</p>
+            </li>
+          </ul>
+
+          </p>
         </div>
       </div>
       <hr class="my-4">
@@ -355,7 +383,10 @@
             <a
               href="https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt"
               >https://www.ibm.com/docs/en/mapms/1_cloud?topic=applications-communicating-mqtt</a
-            >. 8. https://www.influxdata.com/blog/mqtt-use-cases/
+            >.<br>
+            8. EXPLICAR REFERENCIA - <a> https://www.influxdata.com/blog/mqtt-use-cases/ </a>
+            <br>
+            9. Implementação em um projeto real na UFRJ:<a>https://github.com/MattiyyahG/Relatorio_CO2_Sensor</a>
           </p>
         </div>
       </div>
